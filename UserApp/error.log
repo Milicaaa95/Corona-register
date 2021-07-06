@@ -1,5 +1,0 @@
-Aug 22, 2020 11:38:25 PM server.FileServerClient sendFile
-SEVERE: java.rmi.MarshalException: error marshalling arguments; nested exception is: 
-	java.net.SocketException: Software caused connection abort: socket write error
-Aug 23, 2020 6:18:00 PM controller.SignUpController signUp
-SEVERE: java.net.ConnectException: Connection refused: connect
