@@ -1,0 +1,51 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from TokenServiceService WSDL service -->
+
+  <service name="TokenService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.etf.unibl.org"/>
+      <parameter name="wsdlServiceElement" value="TokenServiceService"/>
+      <parameter name="schemaQualified" value="http://service.etf.unibl.org,http://model.etf.unibl.org"/>
+      <parameter name="wsdlServicePort" value="TokenService"/>
+      <parameter name="className" value="org.unibl.etf.service.TokenServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="TokenService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getToken" qname="operNS:getToken" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:getTokenReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:person" xmlns:pns="http://service.etf.unibl.org" type="tns:Person" xmlns:tns="http://model.etf.unibl.org"/>
+      </operation>
+      <operation name="getPassword" qname="operNS:getPassword" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:getPasswordReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:person" xmlns:pns="http://service.etf.unibl.org" type="tns:Person" xmlns:tns="http://model.etf.unibl.org"/>
+      </operation>
+      <operation name="getTokens" qname="operNS:getTokens" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:getTokensReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="updatePerson" qname="operNS:updatePerson" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:updatePersonReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:person" xmlns:pns="http://service.etf.unibl.org" type="tns:Person" xmlns:tns="http://model.etf.unibl.org"/>
+      </operation>
+      <operation name="logOut" qname="operNS:logOut" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:logOutReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:person" xmlns:pns="http://service.etf.unibl.org" type="tns:Person" xmlns:tns="http://model.etf.unibl.org"/>
+      </operation>
+      <operation name="checkTokenValidity" qname="operNS:checkTokenValidity" xmlns:operNS="http://service.etf.unibl.org" returnQName="retNS:checkTokenValidityReturn" xmlns:retNS="http://service.etf.unibl.org" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:uuid" xmlns:pns="http://service.etf.unibl.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getPassword checkTokenValidity getToken getTokens updatePerson logOut"/>
+
+      <typeMapping
+        xmlns:ns="http://model.etf.unibl.org"
+        qname="ns:Person"
+        type="java:org.unibl.etf.model.Person"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <top>
+      <VBox alignment="CENTER" spacing="15.0">
+         <children>
+            <MenuBar fx:id="menu" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Pregled">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#viewAppUsage" text="Korištenje aplikacije" />
+                        <MenuItem mnemonicParsing="false" onAction="#viewMap" text="Mapa evidentiranih pozicija" />
+                     </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Postavke">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#changePassword" text="Promjena lozinke" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Odjava">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#systemLogOut" text="Odjava sa sistema" />
+                        <MenuItem mnemonicParsing="false" onAction="#registryLogOut" text="Odjava iz registra" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <HBox fx:id="detailsHBox" alignment="CENTER" spacing="30.0">
+               <children>
+                  <Label fx:id="alertLabel" text="Obavještenje" />
+                  <Button fx:id="detailsButton" mnemonicParsing="false" text="Detalji" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="290.0" prefWidth="290.0" spacing="10.0" style="-fx-background-color: #f1eeed;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#startChat" text="Započni">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                  <VBox fx:id="chatVBox" prefHeight="355.0" prefWidth="290.0" />
+                  <HBox prefHeight="31.0" prefWidth="290.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="messageTextField" prefHeight="31.0" prefWidth="210.0" />
+                        <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMessage" text="Pošalji" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="290.0" prefWidth="270.0" style="-fx-background-color: #d7d1d0;">
+               <children>
+                  <Label text="Podaci o trenutnoj lokaciji">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Koordinata x" />
+                        <TextField prefHeight="31.0" prefWidth="127.0" fx:id="xTextField" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="90.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Koordinata y" />
+                        <TextField fx:id="yTextField" prefHeight="31.0" prefWidth="127.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Od" />
+                        <TextField fx:id="fromTextField" prefHeight="31.0" prefWidth="190.0" promptText="dd-MM-yyyy_HH-mm-ss">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="291.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Do" />
+                        <TextField fx:id="toTextField" prefHeight="31.0" prefWidth="190.0" promptText="dd-MM-yyyy_HH-mm-ss">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#submit" text="Potvrdi">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="documentsVBox" alignment="TOP_CENTER" layoutX="120.0" layoutY="10.0" prefHeight="290.0" prefWidth="290.0" spacing="10.0" style="-fx-background-color: #f1eeed;">
+               <children>
+                  <Label text="Medicinski fajlovi">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="chooserButton" mnemonicParsing="false" onAction="#selectDocument" text="Izaberi dokument">
+                     <VBox.margin>
+                        <Insets top="155.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#sendDocument" text="Pošalji" />
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>

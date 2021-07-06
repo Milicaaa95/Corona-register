@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/controller/MainController.java=UTF-8
+encoding//src/model/ChatClient.java=UTF-8
+encoding//src/org/unibl/etf/model/Person.java=UTF-8
+encoding//src/org/unibl/etf/service/TokenService.java=UTF-8
+encoding//src/org/unibl/etf/service/TokenServiceService.java=UTF-8
+encoding//src/org/unibl/etf/service/TokenServiceServiceLocator.java=UTF-8
+encoding//src/org/unibl/etf/service/TokenServiceSoapBindingStub.java=UTF-8
